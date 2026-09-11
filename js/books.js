@@ -4,7 +4,7 @@
 $(document).ready(function () {
   var allBooks = [];
 
-  $.get('./description.txt')
+  $.get('./description.txt?v=' + Date.now())
     .done(function (txt) {
       if (txt && txt.trim()) {
         $('#projectDescription').text(txt.trim());
