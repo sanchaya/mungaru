@@ -357,10 +357,10 @@ nav {
 
 .book-cover {
   height: 260px;
-  background-color: #0c0c1d;
+  background-color: var(--text-background);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
 }
 
 .book-info {
