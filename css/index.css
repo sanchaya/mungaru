@@ -181,14 +181,14 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5px 20px;
-  max-width: 400px;
+  padding: 6px 20px;
+  max-width: 560px;
   position: relative;
   z-index: 10001;
 }
 
 .nav-logo {
-  height: 32px;
+  height: 48px;
   width: auto;
   cursor: pointer;
 }
@@ -200,10 +200,14 @@ nav {
 }
 
 .nav-tagline {
-  font-size: 11px;
+  font-size: 22px;
+  font-weight: 700;
   color: var(--text-color1);
   white-space: nowrap;
-  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  line-height: 1.25;
 }
 
 .menu-items {
@@ -270,10 +274,9 @@ nav {
 /* toolbar */
 .archive-toolbar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 12px;
   margin-bottom: 24px;
 }
 
@@ -281,9 +284,8 @@ nav {
   position: relative;
   display: flex;
   align-items: center;
-  min-width: 280px;
-  max-width: 460px;
-  flex: 1;
+  width: 100%;
+  max-width: 640px;
 }
 
 .toolbar-search-box > i {
@@ -311,8 +313,16 @@ nav {
   box-shadow: 0 0 0 3px var(--active-color);
 }
 
-.level-filter {
-  padding: 10px 14px;
+.toolbar-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.level-filter,
+.year-filter {
+  padding: 9px 14px;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   font-size: 14px;
@@ -321,7 +331,8 @@ nav {
   cursor: pointer;
 }
 
-.level-filter:focus {
+.level-filter:focus,
+.year-filter:focus {
   outline: none;
   border-color: var(--grid-list);
 }
@@ -474,7 +485,14 @@ nav {
   .toolbar-search-box {
     min-width: 100%;
   }
-  .level-filter {
+  .toolbar-filters {
     width: 100%;
+  }
+  .level-filter,
+  .year-filter {
+    flex: 1 1 auto;
+  }
+  .nav-tagline {
+    font-size: 18px;
   }
 }

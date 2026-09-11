@@ -72,7 +72,7 @@ NAVBAR
 <main class="container archive-main">
     <div class="archive-intro">
         <h1>Mungaru — Digital Archive</h1>
-        <p>Mungaru — digitized books collection.</p>
+        <p class="project-description" id="projectDescription">Loading description...</p>
         <p class="archive-count"><span id="bookCount">0</span> books digitized and made freely available.</p>
     </div>
 
@@ -81,11 +81,14 @@ NAVBAR
             <i class="fa fa-search"></i>
             <input type="search" placeholder="Search title, author, subject..." class="search" id="searchInput">
         </div>
-        <select id="levelFilter" class="level-filter">
-            <option value="any">All levels</option>
-            <option value="advanced">Advanced</option>
-            <option value="basic">Basic</option>
-        </select>
+        <div class="toolbar-filters">
+            <select id="levelFilter" class="level-filter">
+                <option value="any">All levels</option>
+            </select>
+            <select id="yearFilter" class="year-filter">
+                <option value="any">All years</option>
+            </select>
+        </div>
     </div>
 
     <div class="books-wrap" id="issueswrap"></div>
@@ -147,9 +150,9 @@ SUPPORT BAR + DONATION POPUP
        <div class="book-cover" title="{{title}}" style="background-image:url('{{cover}}')"></div>
        <div class="book-info">
         <h2 class="book-title" title="{{title}}">{{title}}</h2>
-        <p class="book-author"><a href="{{authorUrl}}" target="_blank">{{author}}</a></p>
+        {{#author}}<p class="book-author"><a href="{{authorUrl}}" target="_blank">{{author}}</a></p>{{/author}}
         <p class="book-meta">{{#year}}<span>{{year}}</span>{{/year}}{{#language}}<span> · {{language}}</span>{{/language}}{{#level}}<span> · {{level}}</span>{{/level}}</p>
-        <p class="book-desc">{{info}}</p>
+        {{#info}}<p class="book-desc">{{info}}</p>{{/info}}
        </div>
       </a>
      </div>
