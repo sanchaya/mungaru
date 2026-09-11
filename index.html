@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mungaru — Digital Archive</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mungaru — digitized books collection.">
+<meta name="author" content="Sanchaya">
+
+<link rel="icon" type="image/png" href="./img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./img/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="./img/android-chrome-512x512.png">
+<meta name="msapplication-TileImage" content="./img/mstile-310x310.png">
+
+<meta property="og:title" content="Mungaru — Digital Archive" />
+<meta property="og:description" content="Mungaru — digitized books collection." />
+<meta property="og:type" content="website" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="./css/index.css" media="all">
+<link rel="stylesheet" type="text/css" href="./css/support.css?id=1234" media="all">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4R3DJ46QED"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4R3DJ46QED');
+</script>
+</head>
+<body>
+
+<!-- ==========================
+NAVBAR
+=========================== -->
+<div class="slide-menu-baner">
+    <div class="slide-menu">
+        <div class="header">
+            <span class="menu-brand">Mungaru</span>
+            <i class="fa fa-times fa-2x close-btn" aria-hidden="true"></i>
+        </div>
+        <ul class="slide-menu-item">
+            <li class="active"><a href="#">Books</a></li>
+            <li><a href="https://sanchaya.org" target="_blank">ಸಂಚಯ</a></li>
+            <li><a href="https://sanchifoundation.org" target="_blank">ಸಂಚಿ ಫೌಂಡೇಶನ್</a></li>
+            <li><a href="https://sanchaya.org" target="_blank">About this project</a></li>
+        </ul>
+    </div>
+    <div class="gap-filler"></div>
+</div>
+
+<nav>
+    <div class="center-nav">
+        <a href="./"><img src="./img/app-icon-light.png" alt="Mungaru" class="nav-logo"></a>
+        <div class="nav-tagline">Mungaru — Digital Archive</div>
+    </div>
+    <div class="menu-items">
+        <a href="#" class="active">Books</a>
+        <a href="https://sanchaya.org" target="_blank">ಸಂಚಯ</a>
+        <a href="https://sanchifoundation.org" target="_blank">ಸಂಚಿ ಫೌಂಡೇಶನ್</a>
+    </div>
+    <div class="right-nav">
+        <i class="fa fa-bars fa-lg hamburger-icon" aria-hidden="true"></i>
+    </div>
+</nav>
+
+<main class="container archive-main">
+    <div class="archive-intro">
+        <h1>Mungaru — Digital Archive</h1>
+        <p>Mungaru — digitized books collection.</p>
+        <p class="archive-count"><span id="bookCount">0</span> books digitized and made freely available.</p>
+    </div>
+
+    <div class="archive-toolbar">
+        <div class="toolbar-search-box">
+            <i class="fa fa-search"></i>
+            <input type="search" placeholder="Search title, author, subject..." class="search" id="searchInput">
+        </div>
+        <select id="levelFilter" class="level-filter">
+            <option value="any">All levels</option>
+            <option value="advanced">Advanced</option>
+            <option value="basic">Basic</option>
+        </select>
+    </div>
+
+    <div class="books-wrap" id="issueswrap"></div>
+    <div class="books-empty" id="emptyMsg" style="display:none">No books found.</div>
+</main>
+
+<!-- ==========================
+SUPPORT BAR + DONATION POPUP
+=========================== -->
+<div id="support-bar" class="support-bar">
+    <div class="support-bar-content">
+        <span>❤️ Support Sanchaya Projects - Keep it free and open-source forever / ಸಂಚಯ ಯೋಜನೆಗಳನ್ನು ಬೆಂಬಲಿಸಿ - ಇದನ್ನು ಶಾಶ್ವತವಾಗಿ ಸ್ವತಂತ್ರ ಮತ್ತು ಮುಕ್ತ ಮೂಲವಾಗಿ ಉಳಿಸಿ</span>
+        <span class="support-bar-action">Click to open →</span>
+    </div>
+</div>
+
+<div id="contribution-popup" class="donation-popup">
+    <div class="donation-popup-content">
+        <div class="donation-popup-header">
+            <div class="donation-popup-title">Support Sanchaya Projects</div>
+            <button type="button" class="donation-popup-close close-popup">&#215;</button>
+        </div>
+        <div class="donation-popup-body">
+            <p class="donation-popup-text">We're passionate about keeping Sanchaya Projects free and open-source forever. Your contribution helps us cover basic resources for development activities and continue providing free books for the community.</p>
+            <div class="razorpay-container">
+                <form>
+                    <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_FTB1pZqrFP6jrt" async> </script>
+                </form>
+            </div>
+            <p class="donation-popup-text-kn">ಸಂಚಯ ಯೋಜನೆಗಳನ್ನು ಶಾಶ್ವತವಾಗಿ ಸ್ವತಂತ್ರ ಹಾಗೂ ಮುಕ್ತ ಮೂಲವಾಗಿ ಉಳಿಸಿಕೊಳ್ಳಲು ನಾವು ಬದ್ಧರಾಗಿದ್ದೇವೆ. ನಿಮ್ಮ ದೇಣಿಗೆಯು ಅಭಿವೃದ್ಧಿ ಕಾರ್ಯಗಳಿಗೆ ಬೇಕಾಗುವ ಮೂಲಭೂತ ಸಂಪನ್ಮೂಲಗಳನ್ನು ಭರಿಸಲು ಮತ್ತು ಸಮುದಾಯಕ್ಕೆ ಉಚಿತ ಪುಸ್ತಕಗಳನ್ನು ನೀಡುವುದನ್ನು ಮುಂದುವರಿಸಲು ನಮಗೆ ನೆರವಾಗುತ್ತದೆ.</p>
+        </div>
+        <div class="donation-popup-footer">
+            <button class="donation-popup-btn close-popup">Close / ಮುಚ್ಚಿ</button>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="https://sanchaya.org" target="_blank">ಸಂಚಯ</a>
+            <a href="https://sanchifoundation.org" target="_blank">ಸಂಚಿ ಫೌಂಡೇಶನ್</a>
+            <a href="https://sanchaya.org" target="_blank">About this project</a>
+        </div>
+        <div class="footer-copyright">
+            &copy; <span id="footerYear">2026</span> ಸಂಚಯ ಮತ್ತು ಸಂಚಿ ಫೌಂಡೇಶನ್. Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution 4.0 International License. Each book has its own copyright/license.
+        </div>
+    </div>
+</footer>
+
+<script src="./js/mustache.js"></script>
+<script src="./js/support.js"></script>
+<script src="./js/books.js"></script>
+
+<script id="booktpl" type="text/template">
+    {{#books}}
+     <div class="book-card">
+      <a class="book-link" target="_blank" href="{{url}}">
+       <div class="book-cover" title="{{title}}" style="background-image:url('{{cover}}')"></div>
+       <div class="book-info">
+        <h2 class="book-title" title="{{title}}">{{title}}</h2>
+        <p class="book-author"><a href="{{authorUrl}}" target="_blank">{{author}}</a></p>
+        <p class="book-meta">{{#year}}<span>{{year}}</span>{{/year}}{{#language}}<span> · {{language}}</span>{{/language}}{{#level}}<span> · {{level}}</span>{{/level}}</p>
+        <p class="book-desc">{{info}}</p>
+       </div>
+      </a>
+     </div>
+    {{/books}}
+</script>
+
+<script>
+$('#footerYear').text(new Date().getFullYear());
+</script>
+</body>
+</html>

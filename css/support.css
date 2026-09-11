@@ -1,0 +1,183 @@
+/*!
+ * Sanchaya digital archive portal — theme (accent color)
+ * This file is recolored per project by generate-projects.py.
+ * The placeholder hex codes below are swapped for the project's --color.
+ * Styling follows fonts.sanchaya.net' support bar + contribution popup.
+ */
+
+/*---------------- support bar ------------------------------*/
+.support-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(135deg, #3498db 0%, #2084c7 100%);
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.support-bar-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: white;
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.support-bar-action {
+  font-size: 10px;
+  opacity: 0.9;
+  font-style: italic;
+  color: white;
+}
+
+/*---------------- contribution / donation popup ------------------------------*/
+.donation-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10000;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.donation-popup-content {
+  background-color: white;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: popupFadeIn 0.3s ease;
+}
+
+@keyframes popupFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.donation-popup-header {
+  background: linear-gradient(135deg, #3498db 0%, #2084c7 100%);
+  color: white;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.donation-popup-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.donation-popup-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.donation-popup-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.donation-popup-body {
+  padding: 30px;
+  text-align: center;
+}
+
+.donation-popup-text,
+.donation-popup-text-kn {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.razorpay-container {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.donation-popup-footer {
+  padding: 0 30px 30px;
+  text-align: center;
+}
+
+.donation-popup-btn {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 10px 25px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #555;
+}
+
+.donation-popup-btn:hover {
+  background-color: #e9e9e9;
+  border-color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .donation-popup-content {
+    margin: 20px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+  }
+  .donation-popup-body {
+    padding: 20px;
+  }
+  .donation-popup-header {
+    padding: 15px 20px;
+  }
+  .donation-popup-footer {
+    padding: 0 20px 20px;
+  }
+}
+
+/*---------------- accent utilities (recolorable) ------------------------------*/
+.toolbar-search-box .search:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+}
+
+.book-card:hover .book-title {
+  color: #3498db;
+}
+
+.read-badge {
+  background: #3498db;
+  color: #ffffff;
+}
+
+.active-filter {
+  background: rgba(52, 152, 219, 0.92) !important;
+  color: #ffffff !important;
+}
