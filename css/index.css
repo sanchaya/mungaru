@@ -296,6 +296,10 @@ nav {
   justify-content: center;
 }
 
+.filter-group {
+  display: flex;
+}
+
 .level-filter,
 .year-filter {
   padding: 9px 14px;
@@ -462,9 +466,9 @@ nav {
   .toolbar-filters {
     width: 100%;
   }
-  .level-filter,
-  .year-filter {
+  .filter-group {
     flex: 1 1 auto;
+    min-width: 150px;
   }
   .nav-brand {
     font-size: 17px;

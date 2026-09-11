@@ -16,6 +16,24 @@ $(document).ready(function () {
       $('#projectDescription').remove();
     });
 
+  function enrich(b) {
+    if (!b.author && b.publisher) {
+      b.author = b.publisher;
+      b.authorUrl = 'https://archive.org/search.php?query=creator%3A' + encodeURIComponent(b.publisher);
+    }
+    if (!b.info || !b.info.trim()) {
+      var parts = [];
+      (b.subjects || []).forEach(function (s) {
+        if (!/^\d+$/.test(String(s).trim()) && parts.indexOf(s) === -1) parts.push(s);
+      });
+      if (b.publisher && parts.indexOf(b.publisher) === -1) parts.push(b.publisher);
+      b.info = parts.length
+        ? parts.join(' • ')
+        : 'Digitized print publication, freely available online.';
+    }
+    return b;
+  }
+
   function render(books) {
     var $wrap = $('#issueswrap');
     if (!books.length) {
@@ -52,7 +70,7 @@ $(document).ready(function () {
   $('#yearFilter').on('change', applyFilter);
 
   $.getJSON('./issues.json?' + Math.random(), function (data) {
-    allBooks = data.books || [];
+    allBooks = (data.books || []).map(enrich);
 
     var levels = [];
     var years = [];
@@ -66,7 +84,7 @@ $(document).ready(function () {
         $('#levelFilter').append($('<option>', { value: v, text: v }));
       });
     } else {
-      $('#levelFilter').parent().hide();
+      $('#levelFilterGroup').hide();
     }
 
     if (years.length > 1) {
@@ -75,7 +93,7 @@ $(document).ready(function () {
         $('#yearFilter').append($('<option>', { value: v, text: v }));
       });
     } else {
-      $('#yearFilter').parent().hide();
+      $('#yearFilterGroup').hide();
     }
 
     render(allBooks);
