@@ -42,8 +42,8 @@
       });
     }
 
-    // Pop up the portal a few seconds after the page opens, every visit
-    setTimeout(openPopup, 5000);
+    // Pop up the portal a minute or so after the page opens, every visit
+    setTimeout(openPopup, 60000);
   }
 
   // Hamburger slide menu
