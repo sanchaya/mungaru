@@ -339,11 +339,15 @@ nav {
   transform: translateY(-2px);
 }
 
-.book-link {
+.book-cover-link {
   display: block;
   text-decoration: none;
   color: inherit;
-  height: 100%;
+}
+
+.book-title-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .book-cover {

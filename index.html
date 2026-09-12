@@ -18,8 +18,8 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="./css/index.css?1789154643" media="all">
-<link rel="stylesheet" type="text/css" href="./css/support.css?1789154643" media="all">
+<link rel="stylesheet" type="text/css" href="./css/index.css?1789238158" media="all">
+<link rel="stylesheet" type="text/css" href="./css/support.css?1789238158" media="all">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -138,22 +138,22 @@ SUPPORT BAR + DONATION POPUP
     </div>
 </footer>
 
-<script src="./js/mustache.js?1789154643"></script>
-<script src="./js/support.js?1789154643"></script>
-<script src="./js/books.js?1789154643"></script>
+<script src="./js/mustache.js?1789238158"></script>
+<script src="./js/support.js?1789238158"></script>
+<script src="./js/books.js?1789238158"></script>
 
 <script id="booktpl" type="text/template">
     {{#books}}
      <div class="book-card">
-      <a class="book-link" target="_blank" href="{{url}}">
+      <a class="book-cover-link" target="_blank" href="{{url}}">
        <div class="book-cover" title="{{title}}" style="background-image:url('{{cover}}')"></div>
-       <div class="book-info">
-        <h2 class="book-title" title="{{title}}">{{title}}</h2>
-        {{#author}}<p class="book-author"><a href="{{authorUrl}}" target="_blank">{{author}}</a></p>{{/author}}
-        <p class="book-meta">{{#year}}<span>{{year}}</span>{{/year}}{{#language}}<span> · {{language}}</span>{{/language}}{{#level}}<span> · {{level}}</span>{{/level}}</p>
-        {{#info}}<p class="book-desc">{{info}}</p>{{/info}}
-       </div>
       </a>
+      <div class="book-info">
+       <a class="book-title-link" target="_blank" href="{{url}}"><h2 class="book-title" title="{{title}}">{{title}}</h2></a>
+       {{#author}}<p class="book-author"><a href="{{authorUrl}}" target="_blank">{{author}}</a></p>{{/author}}
+       <p class="book-meta">{{#year}}<span>{{year}}</span>{{/year}}{{#language}}<span> · {{language}}</span>{{/language}}{{#level}}<span> · {{level}}</span>{{/level}}</p>
+       {{#info}}<p class="book-desc">{{info}}</p>{{/info}}
+      </div>
      </div>
     {{/books}}
 </script>
