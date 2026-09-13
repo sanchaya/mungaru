@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Mungaru — Digital Archive</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Mungaru — digitized books collection.">
+<meta name="description" content="Mungaru — digitized books collection - Digitized & Managed by #ServantsOfKnowledge initiative.">
 <meta name="author" content="Sanchaya">
 
 <link rel="icon" type="image/png" href="./img/favicon-32x32.png">
@@ -13,13 +13,13 @@
 <meta name="msapplication-TileImage" content="./img/mstile-310x310.png">
 
 <meta property="og:title" content="Mungaru — Digital Archive" />
-<meta property="og:description" content="Mungaru — digitized books collection." />
+<meta property="og:description" content="Mungaru — digitized books collection - Digitized & Managed by #ServantsOfKnowledge initiative." />
 <meta property="og:type" content="website" />
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="./css/index.css?1789238158" media="all">
-<link rel="stylesheet" type="text/css" href="./css/support.css?1789238158" media="all">
+<link rel="stylesheet" type="text/css" href="./css/index.css?1789239200" media="all">
+<link rel="stylesheet" type="text/css" href="./css/support.css?1789239200" media="all">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -57,7 +57,7 @@ NAVBAR
 <nav>
     <div class="center-nav">
         <a href="./"><img src="./img/app-icon-light.png" alt="Mungaru" class="nav-logo"></a>
-        <span class="nav-brand">Mungaru</span>
+        <span class="nav-brand">Mungaru — Digital Archive</span>
     </div>
     <div class="right-nav">
         <i class="fa fa-bars fa-lg hamburger-icon" aria-hidden="true"></i>
@@ -66,15 +66,21 @@ NAVBAR
 
 <main class="container archive-main">
     <div class="archive-intro">
-        <h1>Mungaru — Digital Archive</h1>
+        <h1 class="sr-only">Mungaru — Digital Archive</h1>
         <p class="project-description" id="projectDescription">Loading description...</p>
-        <p class="archive-count"><span id="bookCount">0</span> books digitized and made freely available.</p>
+        <p class="archive-count"><span id="bookCount">0</span> books digitized and made freely available<span id="yearStats"></span>.</p>
     </div>
 
     <div class="archive-toolbar">
-        <div class="toolbar-search-box">
-            <i class="fa fa-search"></i>
-            <input type="search" placeholder="Search title, author, subject..." class="search" id="searchInput">
+        <div class="toolbar-search-row">
+            <div class="toolbar-search-box">
+                <i class="fa fa-search"></i>
+                <input type="search" placeholder="Search title, author, subject..." class="search" id="searchInput">
+            </div>
+            <div class="toolbar-view-toggle" id="viewToggle">
+                <button type="button" class="view-btn view-grid active" id="viewGrid" title="Grid view" aria-label="Grid view"><i class="fa fa-th-large"></i></button>
+                <button type="button" class="view-btn view-list" id="viewList" title="List view" aria-label="List view"><i class="fa fa-list"></i></button>
+            </div>
         </div>
         <div class="toolbar-filters">
             <div class="filter-group" id="levelFilterGroup">
@@ -82,10 +88,10 @@ NAVBAR
                     <option value="any">All levels</option>
                 </select>
             </div>
-            <div class="filter-group" id="yearFilterGroup">
-                <select id="yearFilter" class="year-filter">
-                    <option value="any">All years</option>
-                </select>
+            <div class="filter-group year-group" id="yearFilterGroup">
+                <div class="year-list" id="yearList">
+                    <button type="button" class="year-pill active" data-year="any">All years</button>
+                </div>
             </div>
         </div>
     </div>
@@ -138,9 +144,9 @@ SUPPORT BAR + DONATION POPUP
     </div>
 </footer>
 
-<script src="./js/mustache.js?1789238158"></script>
-<script src="./js/support.js?1789238158"></script>
-<script src="./js/books.js?1789238158"></script>
+<script src="./js/mustache.js?1789239200"></script>
+<script src="./js/support.js?1789239200"></script>
+<script src="./js/books.js?1789239200"></script>
 
 <script id="booktpl" type="text/template">
     {{#books}}

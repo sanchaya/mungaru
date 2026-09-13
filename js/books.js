@@ -1,8 +1,10 @@
 // books.js — renders issues.json into the book grid and provides
-// live search (title/author/subject), level and year filtering.
+// live search (title/author/subject), level filter, a clickable year
+// list, and grid/list view switching.
 // The project description is loaded from a separate description.txt file.
 $(document).ready(function () {
   var allBooks = [];
+  var totalBooks = 0;
 
   $.get('./description.txt?v=' + Date.now())
     .done(function (txt) {
@@ -39,19 +41,37 @@ $(document).ready(function () {
     if (!books.length) {
       $wrap.empty();
       $('#emptyMsg').show();
-      $('#bookCount').text('0');
-      return;
+    } else {
+      $('#emptyMsg').hide();
+      var tpl = $('#booktpl').html();
+      $wrap.html(Mustache.to_html(tpl, { books: books }));
     }
-    $('#emptyMsg').hide();
-    var tpl = $('#booktpl').html();
-    $wrap.html(Mustache.to_html(tpl, { books: books }));
-    $('#bookCount').text(books.length);
+    updateStats();
+  }
+
+  function updateStats() {
+    var selectedYear = currentYear();
+    $('#bookCount').text(totalBooks);
+    var $yearStats = $('#yearStats');
+    if (selectedYear && selectedYear !== 'any') {
+      var n = allBooks.filter(function (b) {
+        return String(b.year) === String(selectedYear);
+      }).length;
+      $yearStats.text(' · ' + n + (n === 1 ? ' item' : ' items') + ' in ' + selectedYear);
+    } else {
+      $yearStats.text('');
+    }
+  }
+
+  function currentYear() {
+    var $active = $('#yearList .year-pill.active');
+    return $active.length ? $active.data('year') : 'any';
   }
 
   function applyFilter() {
     var q = ($('#searchInput').val() || '').toLowerCase().trim();
     var level = $('#levelFilter').val();
-    var year = $('#yearFilter').val();
+    var year = currentYear();
 
     var filtered = allBooks.filter(function (b) {
       var text = [b.title, b.author, b.publisher, b.info, (b.subjects || []).join(' ')]
@@ -59,7 +79,7 @@ $(document).ready(function () {
         .toLowerCase();
       var matchQ = !q || text.indexOf(q) !== -1;
       var matchL = level === 'any' || b.level === level;
-      var matchY = year === 'any' || String(b.year) === year;
+      var matchY = year === 'any' || String(b.year) === String(year);
       return matchQ && matchL && matchY;
     });
     render(filtered);
@@ -67,10 +87,30 @@ $(document).ready(function () {
 
   $('#searchInput').on('input', applyFilter);
   $('#levelFilter').on('change', applyFilter);
-  $('#yearFilter').on('change', applyFilter);
+
+  $(document).on('click', '#yearList .year-pill', function () {
+    $('#yearList .year-pill').removeClass('active');
+    $(this).addClass('active');
+    applyFilter();
+  });
+
+  function setView(view) {
+    $('#issueswrap').toggleClass('list-view', view === 'list');
+    $('#viewGrid').toggleClass('active', view !== 'list');
+    $('#viewList').toggleClass('active', view === 'list');
+    try { localStorage.setItem('mungaru-view', view); } catch (e) {}
+  }
+
+  $('#viewGrid').on('click', function () { setView('grid'); });
+  $('#viewList').on('click', function () { setView('list'); });
+
+  var savedView = 'grid';
+  try { savedView = localStorage.getItem('mungaru-view') || 'grid'; } catch (e) {}
+  setView(savedView);
 
   $.getJSON('./issues.json?' + Math.random(), function (data) {
     allBooks = (data.books || []).map(enrich);
+    totalBooks = allBooks.length;
 
     var levels = [];
     var years = [];
@@ -90,7 +130,12 @@ $(document).ready(function () {
     if (years.length > 1) {
       years.sort(function (a, b) { return +b - +a; });
       years.forEach(function (v) {
-        $('#yearFilter').append($('<option>', { value: v, text: v }));
+        $('#yearList').append($('<button>', {
+          type: 'button',
+          'class': 'year-pill',
+          'data-year': v,
+          text: v
+        }));
       });
     } else {
       $('#yearFilterGroup').hide();
