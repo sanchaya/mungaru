@@ -62,7 +62,9 @@ $(document).ready(function () {
       var n = allBooks.filter(function (b) {
         return String(b.year) === String(selectedYear);
       }).length;
-      $yearStats.text(' · ' + n + (n === 1 ? ' issue' : ' issues') + ' in ' + selectedYear);
+      var termPlural = window.ITEM_TERM || 'items';
+      var termSingular = window.ITEM_TERM_SINGULAR || 'item';
+      $yearStats.text(' · ' + n + ' ' + (n === 1 ? termSingular : termPlural) + ' in ' + selectedYear);
     } else {
       $yearStats.text('');
     }
