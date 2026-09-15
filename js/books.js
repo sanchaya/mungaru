@@ -79,7 +79,7 @@ $(document).ready(function () {
     var year = currentYear();
 
     var filtered = allBooks.filter(function (b) {
-      var text = [b.title, b.author, b.publisher, b.info, (b.subjects || []).join(' ')]
+      var text = [b.title, b.alt_title, b.author, b.publisher, b.info, (b.subjects || []).join(' ')]
         .join(' ')
         .toLowerCase();
       var matchQ = !q || text.indexOf(q) !== -1;
