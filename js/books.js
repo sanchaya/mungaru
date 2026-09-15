@@ -9,7 +9,12 @@ $(document).ready(function () {
   $.get('./description.txt?v=' + Date.now())
     .done(function (txt) {
       if (txt && txt.trim()) {
-        $('#projectDescription').text(txt.trim());
+        var paras = txt.trim().split(/\r?\n/).map(function (l) {
+          return l.trim();
+        }).filter(Boolean);
+        $('#projectDescription')
+          .empty()
+          .append(paras.map(function (l) { return $('<p>').text(l); }));
       } else {
         $('#projectDescription').remove();
       }

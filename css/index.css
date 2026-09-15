@@ -242,6 +242,10 @@ nav {
   font-size: 13px;
 }
 
+.project-description p + p {
+  margin-top: 6px;
+}
+
 .archive-count span {
   font-weight: 700;
   color: var(--grid-list);
