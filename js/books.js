@@ -1,4 +1,4 @@
-// books.js — renders issues.json into the book grid and provides
+// books.js — renders issues.json into the issue grid and provides
 // live search (title/author/subject), level filter, a clickable year
 // list, and grid/list view switching.
 // The project description is loaded from a separate description.txt file.
@@ -36,7 +36,7 @@ $(document).ready(function () {
       if (b.publisher && parts.indexOf(b.publisher) === -1) parts.push(b.publisher);
       b.info = parts.length
         ? parts.join(' • ')
-        : 'Digitized print publication, freely available online.';
+        : 'Digitized newspaper issue, freely available online.';
     }
     return b;
   }
@@ -62,7 +62,7 @@ $(document).ready(function () {
       var n = allBooks.filter(function (b) {
         return String(b.year) === String(selectedYear);
       }).length;
-      $yearStats.text(' · ' + n + (n === 1 ? ' item' : ' items') + ' in ' + selectedYear);
+      $yearStats.text(' · ' + n + (n === 1 ? ' issue' : ' issues') + ' in ' + selectedYear);
     } else {
       $yearStats.text('');
     }
